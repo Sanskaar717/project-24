@@ -1,25 +1,26 @@
-class Paper {
-    constructor(x,y){
-        
-       var options={
-        isStatic:false,
-        restitution:0.3,
-        friction:0.5,
-        density:1.2
-       }
+class Paper{
+    constructor(x,y,radius){
+        var ops = {
+            isStatic : false,
+            restitution : 0.3,
+            friction : 0.5,
+            destiny : 1.2
+        }
 
-    Matter.Bodies.circle(x,y,5,options);
-    this.radius = 5;
-    World.add(myWorld,this.body);
-
+        this.body = Bodies.circle(x,y,radius,ops);
+        this.radius = radius;
+        World.add(myWorld,this.body);
     }
+
     display(){
-        pos = this.body.position;
+        var pos = this.body.position;
+        var angle = this.body.angle;
         push();
         translate(pos.x,pos.y);
-        fill("pink");
+        rotate(angle);
+        fill("white");
         ellipseMode(CENTER);
-        ellipse(0,0,this.radius);
+        ellipse(0,0,this.width,this.height);
         pop();
     }
 }
